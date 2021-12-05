@@ -1,12 +1,12 @@
 # SPI Bus
 ## Interface
-The AC is the SPI master and the ESP8266 is the SPI slave. MHI uses the signals SCK, MOSI and MISO.  A slave select signal is not supported.
+The AC is the SPI master. MHI uses the signals SCK, MOSI and MISO. A slave select signal is not supported.
 
 Name | Function |input/output
 ------------ | ------------- |--------------
-SCK | serial clock | Clock output for AC, input for ESP8266
-MOSI | Master Out, Slave In | Data output for MHI, input for ESP8266
-MISO | Master In, Slave Out | Input for MHI, output for ESP8266
+SCK | serial clock | Clock output from AC
+MOSI | Master Out, Slave In | Data output from AC
+MISO | Master In, Slave Out |Data input to AC
 
 ## Protocol
 Clock polarity: CPOL=1 => clock idles at 1, and each cycle consists of a pulse of 0
@@ -18,7 +18,7 @@ T<sub>Byte</sub> Time for one byte
 T<sub>BytePause</sub> Time between two bytes   
 T<sub>Bit</sub> Time for one bit   
 
-![timing](/images/timing_frame-byte.png)
+![grafik](https://user-images.githubusercontent.com/23119513/144753997-48354b1c-e728-49bf-9f56-ea8085d8a741.png)
 
 The following timing is used by SRK xx ZS-S
 
@@ -29,7 +29,7 @@ T<sub>Frame</sub>|T<sub>FramePause</sub>|T<sub>Byte</sub>|T<sub>BytePause</sub>|
 Other models could have different timing
 
 A frame consists of 20 bytes. A frame consumes 20x2x250µs=10ms. Between 2 frames is a pause of 40ms. 20 frames per second will be transmitted. The following oscilloscope screenshot shows 3 bytes:
-![SPI timing](/images/ScreenImg-11-cut.png)
+![grafik](https://user-images.githubusercontent.com/23119513/144753799-f5fc59df-1925-4a60-9a0c-f6675fd9c838.png)
 
 Yellow: SCK; Purple: MOSI
 # SPI Frame
@@ -61,8 +61,8 @@ raw byte # | long name | short name
 
 In the description we differ between
 
-    MOSI frame -> frame send by MHI-AC, received by ESP8266.
-    MISO frame -> frame send by ESP8266, received by MHI-AC.
+    MOSI frame -> frame send by AC
+    MISO frame -> frame send by remote control, e.g. MHI-AC-Ctrl, received by AC.
 
 For the testing and evaluation of the protocol the remote controls [MH-AC-WIFI-1](https://www.intesisbox.com/de/mitsubishi-heavy-ascii-wifi-ac-mh-ac-wmp-1/gateway/) and [RC-E5](https://www.mhi-mth.co.jp/en/products/pdf/pjz012a087b_german.pdf) were used.
 

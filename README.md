@@ -2,7 +2,7 @@
 Trace of SPI signals for Mitsubishi Air Conditioner
 
 Publish the data from the SPI signals MOSI and MISO via MQTT and output to the debug console.
-Use this program if you intend to evaluate / debug the SPI data. It is not needed for the normal user of [MHI-AC-Ctrl](https://github.com/absalom-muc/MHI-AC-Ctrl).
+Use this program if you intend to evaluate / debug the SPI data of your air conditioner. It is not needed for the user of [MHI-AC-Ctrl](https://github.com/absalom-muc/MHI-AC-Ctrl).
 
 For understanding of the monitored data [SPI.md](SPI.md) is a good starting point.
 
@@ -12,19 +12,18 @@ For understanding of the monitored data [SPI.md](SPI.md) is a good starting poin
 a qualified professional because faulty handling may cause leakage of water, electric shock or fire! :warning: 
 
 # Prerequisites:
-You need a MHI-AC-Ctrl PCB for using MHI-AC-Trace. I suggest a second PCB, so that on one PCB MHI-AC-Ctrl SW and on the other PCB MHI-AC-Trace SW is executed.
-
-For MHI-AC-Trace MOSI and MISO (and SCK of course) are inputs, both data streams are monitored.
+You need a [MHI-AC-Ctrl](https://github.com/absalom-muc/MHI-AC-Ctrl) PCB for using MHI-AC-Trace. For MHI-AC-Trace MOSI and MISO (and SCK of course) are inputs, both data streams are monitored. MISO is only considered if a SPI based remote control is attached (e.g. [MHI-AC-Ctrl](https://github.com/absalom-muc/MHI-AC-Ctrl) or a commercial RC)
 
 # Installing:
 
 ## Hardware:
-Identical to MHI-AC-Ctrl. Check [MHI-AC-Ctrl Readme](https://github.com/absalom-muc/MHI-AC-Ctrl#readme) for a list of supported devices.
+Identical to MHI-AC-Ctrl. Check [MHI-AC-Ctrl Readme](https://github.com/absalom-muc/MHI-AC-Ctrl#readme) for a list of supported devices. No adaption of the MHI-AC-Ctrl PCB is required.
 
 ## Software:
 The program uses the following libraries
  - :warning:[MQTT client library](https://github.com/knolleary/pubsubclient) - please don't use v2.8.0! (because of this [issue](https://github.com/knolleary/pubsubclient/issues/747)). Better use v2.7.0:warning:
- - [ArduinoOTA](https://github.com/esp8266/Arduino/tree/master/libraries/ArduinoOTA)
+
+hint: ArduinoOTA is not supported
  
 Please check the GitHub pages to see how to install them (usually via tools -> libraries).
 Create a sub-directory "MHI-AC-Trace" and copy the files from the src directory in your MHI-AC-Trace sub-directory. 

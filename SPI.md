@@ -330,6 +330,9 @@ MOSI-DB6[7] | MOSI-DB9 | MOSI-DB10 | MOSI-DB11
  1          | 0x05     | 0x33      | SET TEMP = MOSI-DB11 / 2
  1          | 0x1e     | 0x30      | TOTAL I/U RUN = MOSI-DB11 * 100
 
+## Summary
+MOSI frame:
+![grafik](https://user-images.githubusercontent.com/23119513/144754606-c56bfd1a-edf1-4c7b-855d-0d391fbb1719.png)
 
 ## Unknown
 In the SPI frames are more information coded than known for me. In MOSI-DB13 some bits seem to represent the status of the outdoor unit.

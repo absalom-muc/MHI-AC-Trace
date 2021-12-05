@@ -17,7 +17,7 @@ You need a [MHI-AC-Ctrl](https://github.com/absalom-muc/MHI-AC-Ctrl) PCB for usi
 # Installing:
 
 ## Hardware:
-Identical to MHI-AC-Ctrl. Check [MHI-AC-Ctrl Readme](https://github.com/absalom-muc/MHI-AC-Ctrl#readme) for a list of supported devices. No adaption of the MHI-AC-Ctrl PCB is required.
+Identical to MHI-AC-Ctrl PCB, no adaption of the MHI-AC-Ctrl PCB is required. Check [MHI-AC-Ctrl Readme](https://github.com/absalom-muc/MHI-AC-Ctrl#readme) for a list of supported devices.
 
 ## Software:
 The program uses the following libraries
@@ -26,10 +26,10 @@ The program uses the following libraries
 hint: ArduinoOTA is not supported
  
 Please check the GitHub pages to see how to install them (usually via tools -> libraries).
-Create a sub-directory "MHI-AC-Trace" and copy the files from the src directory in your MHI-AC-Trace sub-directory. 
+Create a sub-directory "MHI-AC-Trace" and copy the files from the src directory in your MHI-AC-Trace sub-directory. Finally enter WiFi and MQTT credentials in [MHI-AC-Trace.h](src/MHI-AC-Trace.h).
 
 # Disclaimer
-I'm aware that the MHI-AC-Trace software looks unstructed and is far away from optimized. However, it works for me since more than 2 years. Therefore I have no plan to update MHI-AC-Trace software unless there is a serious bug.
+I'm aware that the MHI-AC-Trace software looks unstructed and is far away from optimized. However, it works for me since more than 2 years. Therefore I have no plan to update MHI-AC-Trace software unless there is a serious bug. This SW is experimental and you use it on your own risk.
 
 # Output
 The data is output on the serial debug console and on MQTT. There is an offset of one MISO frame implemented. That means you see in one packet

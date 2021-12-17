@@ -335,10 +335,13 @@ MOSI frame:
 ![grafik](https://user-images.githubusercontent.com/23119513/144754606-c56bfd1a-edf1-4c7b-855d-0d391fbb1719.png)
 
 ## Operation Data Details
-Here you find some information related to operating data. It is not complete and partly it might be not correct.
+Here you find detailed information related to some operating data. It is mainly based on my observations and might be partly not correct.
+
 ### 2 "SET-TEMP"
-The setpoint for the temperature is coded in MOSI-DB11[6:0] according to the formula T[°C]=DB11[6:0]/2.
-The value is identical to [Temperature setpoint](#temperature-setpoint) but with the lower resolution of 1°C.
+The setpoint for the temperature is coded in MOSI-DB11[6:0] according to the formula T[°C]=DB11[6:0]/2. The value is identical to [Temperature setpoint](#temperature-setpoint) but with the lower resolution of 1°C.
+
+### 3 "RETURN-AIR"
+Nearly identical to [Room temperature](#room-temperature). Sometimes the two values differ by <0.5 ° C. Background is not clear. The RETURN-AIR temperature is calculated by T[°C]=(DB11[7:0]-61)/4. The resolution is 0.25°C.
 
 ## Unknown
 In the SPI frames are more information coded than known for me. In MOSI-DB13 some bits seem to represent the status of the outdoor unit.

@@ -263,7 +263,7 @@ The resolution is 0.25°C. When writing a value <255, this temperature value is 
 
 ### Temperature setpoint
 The temperature setpoint is coded in MOSI DB2[6:0] according to the formula T[°C]=DB2[6:0]/2
-The resolution of 0.5°C is supported by the wired remote control [RC-E5](https://www.mhi-mth.co.jp/en/products/pdf/pjz012a087b_german.pdf). The IR remote control supports a resolution of 1°C only.
+The resolution of 0.5°C is supported by the wired remote control [RC-E5](https://www.mhi-mth.co.jp/en/products/pdf/pjz012a087b_german.pdf) and MHI-AC-Ctrl. But the IR remote control supports a resolution of 1°C only.
 The same coding is used for setting the temperature. The set bit in the MISO frame is DB2[7].
 
 ### Error code (read only)
@@ -301,7 +301,7 @@ MISO-DB6 | MISO-DB9 | MISO-DB10 | MISO-DB11 | MISO-DB12 | MOSI-DB9 | MOSI-DB10 |
  --------| ---------| ----------| ----------| ----------| ---------| ----------| ----------
   0x40   | 0x80     | 0xff      | 0xff      | 0xff      | 0x80     | 0x10      |  temperature 
 
-Please check the program code for further details. You find [here](https://github.com/absalom-muc/MHI-AC-Ctrl/blob/master/MQTT.md#mqtt-topics-related-to-operating-data) the list of supported topics related to operating data.
+Please check the program code for further details. You find [here](https://github.com/absalom-muc/MHI-AC-Ctrl/blob/master/SW-Configuration.md#operating-data-mhi-ac-ctrl-coreh) the list of supported topics related to operating data. And some details related to the operating data are listed in section [Operation Data Details](#operation-data-details)
 
 ## Last Error Operation Data
 The AC stores some operation data of the last error event. This error operation data can be read with the command:
@@ -333,6 +333,12 @@ MOSI-DB6[7] | MOSI-DB9 | MOSI-DB10 | MOSI-DB11
 ## Summary
 MOSI frame:
 ![grafik](https://user-images.githubusercontent.com/23119513/144754606-c56bfd1a-edf1-4c7b-855d-0d391fbb1719.png)
+
+## Operation Data Details
+Here you find some information related to operating data. It is not complete and partly it might be not correct.
+### 2 "SET-TEMP"
+The setpoint for the temperature is coded in MOSI-DB11[6:0] according to the formula T[°C]=DB11[6:0]/2.
+The value is identical to [Temperature setpoint](#temperature-setpoint) but with the lower resolution of 1°C.
 
 ## Unknown
 In the SPI frames are more information coded than known for me. In MOSI-DB13 some bits seem to represent the status of the outdoor unit.

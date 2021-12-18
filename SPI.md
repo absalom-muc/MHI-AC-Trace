@@ -337,11 +337,33 @@ MOSI frame:
 ## Operation Data Details
 Here you find detailed information related to some operating data. It is mainly based on my observations and might be partly not correct.
 
-### 2 "SET-TEMP"
+### 1 "MODE"
+Stored in the lower 4 bits of DB10:
+DB10[3:0] | MODE 
+ ---------| ------
+ 0x0      | Auto or Stop in error mode 
+ 0x1      | Dry 
+ 0x2      | Cool
+ 0x3      | Fan
+ 0x4      | Heat   
+
+### 2 "SET-TEMP" [°C]
 The setpoint for the temperature is coded in MOSI-DB11[6:0] according to the formula T[°C]=DB11[6:0]/2. The value is identical to [Temperature setpoint](#temperature-setpoint) but with the lower resolution of 1°C when the AC is not powered. But when the AC is powered and Mode=HEAT then SET-TEMP=Temperature setpoint+2°C
 
-### 3 "RETURN-AIR"
+### 3 "RETURN-AIR" [°C]
 Nearly identical to [Room temperature](#room-temperature). Sometimes the two values differ by <0.5 ° C. Background is not clear. The RETURN-AIR temperature is calculated by T[°C]=(DB11[7:0]-61)/4. The resolution is 0.25°C.
+
+### 12 "TOTAL-IU-RUN" [h]
+Operating hours Indoor Unit[h]=DB11*100
+
+### 24 "COMP" [Hz]
+frequency=(db10-0x10)*25.6f + 0.1f * db11, for db10>=0x10
+
+### 32 "TDSH" [°C]
+TDSH[°C]=DB11/2
+
+### 37 "TOTAL-COMP-RUN" [h]
+Operating hours [h]=DB11*100
 
 ## Unknown
 In the SPI frames are more information coded than known for me. In MOSI-DB13 some bits seem to represent the status of the outdoor unit.

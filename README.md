@@ -42,7 +42,7 @@ The output on the serial debug (baud rate 115200, switch off the time stamp) has
 All numbers in hexadecimal format.
 
 ## MQTT output
-The data is output via topic "raw" in char format (hex). Overall 43 chars per line. Format is identical to serial console output
+The data is output via topic "raw" in ascii char format. Overall 43 chars per line. Order is identical to serial console output:
 - Frame counter number (high byte)
 - Frame counter number (low byte)
 - MOSI SB0-SB2

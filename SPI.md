@@ -357,13 +357,18 @@ Nearly identical to [Room temperature](#room-temperature). Sometimes the two val
 Operating hours Indoor Unit[h]=DB11*100
 
 ### 24 "COMP" [Hz]
-frequency=(db10-0x10)*25.6f + 0.1f * db11, for db10>=0x10
+Compressor frequency=(db10-0x10)*25.6f + 0.1f * db11, for db10>=0x10
+
+### 27 "TD" [°C]
+Discharge Pipe Temperature,  
+if db11 < 0x12 TD <=30°C,    
+else TD = db11 / 2 + 32 (approx)
 
 ### 32 "TDSH" [°C]
 TDSH[°C]=DB11/2
 
 ### 37 "TOTAL-COMP-RUN" [h]
-Operating hours [h]=DB11*100
+Operating hours compressor [h]=DB11*100
 
 ## Unknown
 In the SPI frames are more information coded than known for me. In MOSI-DB13 some bits seem to represent the status of the outdoor unit.

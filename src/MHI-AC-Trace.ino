@@ -66,14 +66,13 @@ void setup() {
 }
 
 void loop() {
-  char strtmp[100]; // for the MQTT strings to send
+  char strtmp[400]; // for the MQTT strings to send
   byte MOSI_byte;
   byte MISO_byte;
   byte bit_mask;
   unsigned long lastDatapacketMillis = 0;
   unsigned long runtimeMillis = 0;
   unsigned long SCKMillis;
-  //uint8_t MOSI_frame[20];
   uint8_t MISO_frame[20];
   bool valid_datapacket_received = false;
   uint8_t MQTTframe[43];
@@ -129,7 +128,8 @@ void loop() {
     }
 
     char buf[100];
-    if (((MQTTframe[2+0] & 0xfe) == 0x6c) | (MQTTframe[2+1] != 0x80) | (MQTTframe[2+2] != 0x04)) {
+    valid_datapacket_received = true;
+    if (((MQTTframe[2+0] & 0xfe) != 0x6c) | (MQTTframe[2+1] != 0x80) | (MQTTframe[2+2] != 0x04)) {
       String(packet_cnt).toCharArray(strtmp, 10);
       strcat(strtmp, " wrong MOSI signature ");
       String(MQTTframe[2+0], HEX).toCharArray(buf, 3);
@@ -142,19 +142,18 @@ void loop() {
       strcat(strtmp, buf);
       Serial.printf("%s\n", strtmp);
       MQTTclient.publish(MQTT_PREFIX "Error1", strtmp, true);
+      valid_datapacket_received = false;
     }
     if ((MQTTframe[2+18] != highByte(rx_checksum)) | (MQTTframe[2+19] != lowByte(rx_checksum))) {
       String(packet_cnt).toCharArray(strtmp, 10);
       strcat(strtmp, " wrong MOSI checksum");
       Serial.printf("%s\n", strtmp);
       MQTTclient.publish(MQTT_PREFIX "Error2", strtmp, true);
+      valid_datapacket_received = false;
     }
-    if ((MQTTframe[2+0] == 0x6c) & (MQTTframe[2+1] == 0x80) & (MQTTframe[2+2] == 0x04) & (MQTTframe[2+18] == highByte(rx_checksum)) & (MQTTframe[2+19] == lowByte(rx_checksum)))
-      valid_datapacket_received = true;
-    else
+    if (!valid_datapacket_received)
       update_sync(false);
-
-    if (valid_datapacket_received) { // valid frame received
+    else { // valid frame received
       packet_cnt++;
 
       if (millis() - lastDatapacketMillis < 60)
@@ -166,11 +165,21 @@ void loop() {
         MQTTframe[0] = highByte(packet_cnt);
         MQTTframe[1] = lowByte(packet_cnt);
         MQTTframe[42] = repetitionNo;
-        MQTTclient.publish(MQTT_PREFIX "raw", MQTTframe, 43, false);
+        strtmp[0]=0;
+        for (uint8_t byte_cnt = 0; byte_cnt < 43; byte_cnt++){
+          String(MQTTframe[byte_cnt], HEX).toCharArray(buf, 3);
+          if(strlen(buf)<2)
+            strcat(strtmp, "0");
+          strcat(strtmp, buf);
+          strcat(strtmp, " ");         
+        }
 
-        for (uint8_t byte_cnt = 0; byte_cnt < 43; byte_cnt++)
-          Serial.printf("%02x ", MQTTframe[byte_cnt]);
-        Serial.println();
+#if MQTT_CHAR == true
+        MQTTclient.publish(MQTT_PREFIX "raw", MQTTframe, 43, false);
+#else
+        MQTTclient.publish_P(MQTT_PREFIX "raw", strtmp, false);
+#endif
+        Serial.println(strtmp);
         
         repetitionNo = 0;
       }

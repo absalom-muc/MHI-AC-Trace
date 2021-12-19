@@ -129,7 +129,7 @@ void loop() {
     }
 
     char buf[100];
-    if ((MQTTframe[2+0] != 0x6c) | (MQTTframe[2+1] != 0x80) | (MQTTframe[2+2] != 0x04)) {
+    if (((MQTTframe[2+0] & 0xfe) == 0x6c) | (MQTTframe[2+1] != 0x80) | (MQTTframe[2+2] != 0x04)) {
       String(packet_cnt).toCharArray(strtmp, 10);
       strcat(strtmp, " wrong MOSI signature ");
       String(MQTTframe[2+0], HEX).toCharArray(buf, 3);

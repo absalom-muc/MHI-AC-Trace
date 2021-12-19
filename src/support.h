@@ -1,7 +1,7 @@
 #ifndef SUPPORT_h
 #define SUPPORT_h
 
-#define VERSION "1.5"
+#define VERSION "1.51"
 
 #define WIFI_SSID "your SSID"
 #define WIFI_PASSWORD "your WiFi password"
@@ -18,8 +18,13 @@
 #define MQTT_PREFIX HOSTNAME "/"
 #define MQTT_SET_PREFIX MQTT_PREFIX "set/" // prefix for subscribing set commands
 
-#define OTA_HOSTNAME HOSTNAME                       // default for the OTA_HOSTNAME is the HOSTNAME
-#define OTA_PASSWORD ""                             // Enter an OTA password if required
+#define OTA_HOSTNAME HOSTNAME              // default for the OTA_HOSTNAME is the HOSTNAME
+#define OTA_PASSWORD ""                    // Enter an OTA password if required
+
+#define MQTT_CHAR true                     // true  : MQTT raw as characters (lowest resources)
+                                           // false : MQTT raw as hex values (human readable)
+
+// *** The configuration ends here ***
 
 #include <ESP8266WiFi.h>        // https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WiFi
 #include <PubSubClient.h>       // https://github.com/knolleary/pubsubclient

@@ -24,7 +24,7 @@ The program uses the following libraries
  - [ArduinoOTA](https://github.com/esp8266/Arduino/tree/master/libraries/ArduinoOTA)
  
 Please check the GitHub pages to see how to install them (usually via tools -> libraries).
-Create a sub-directory "MHI-AC-Trace" and copy the files from the src directory in your MHI-AC-Trace sub-directory. Finally enter WiFi and MQTT credentials in [MHI-AC-Trace.h](src/MHI-AC-Trace.h).
+Create a sub-directory "MHI-AC-Trace" and copy the files from the src directory in your MHI-AC-Trace sub-directory. Finally enter WiFi and MQTT credentials in [MHI-AC-Trace.h](src/MHI-AC-Trace.h). Please also consider the option 'MQTT_CHAR'.
 
 # Disclaimer
 This SW is experimental and you use it on your own risk.

@@ -301,7 +301,7 @@ MISO-DB6 | MISO-DB9 | MISO-DB10 | MISO-DB11 | MISO-DB12 | MOSI-DB9 | MOSI-DB10 |
  --------| ---------| ----------| ----------| ----------| ---------| ----------| ----------
   0x40   | 0x80     | 0xff      | 0xff      | 0xff      | 0x80     | 0x10      |  temperature 
 
-Please check the program code for further details. You find [here](https://github.com/absalom-muc/MHI-AC-Ctrl/blob/master/SW-Configuration.md#operating-data-mhi-ac-ctrl-coreh) the list of supported topics related to operating data. And some details related to the operating data are listed in section [Operation Data Details](#operation-data-details)
+Please check the program code for further details. You find [here](https://github.com/absalom-muc/MHI-AC-Ctrl/blob/master/SW-Configuration.md#operating-data-mhi-ac-ctrl-coreh) the list of some supported topics related to operating data. And some details related to the operating data are listed in section [Operation Data Details](#operation-data-details)
 
 ## Last Error Operation Data
 The AC stores some operation data of the last error event. This error operation data can be read with the command:
@@ -335,7 +335,7 @@ MOSI frame:
 ![grafik](https://user-images.githubusercontent.com/23119513/144754606-c56bfd1a-edf1-4c7b-855d-0d391fbb1719.png)
 
 ## Operation Data Details
-Here you find detailed information related to some operating data. It is mainly based on my observations and might be partly not correct.
+Here you find detailed information related to some operating data. It is mainly based on my observations and might be partly not correct. It seems that there are different operating data available for different ACs. So there might be operating data not supported by your AC (e.g. the number of implemented temperature sensors) or there might be additional operating data available for your AC but not supported by the SW. The same is valid for the error operation data. I'm not aware how to find out addtional operation data w/o using a third party wired remote control.
 
 ### 1 "MODE"
 Stored in the lower 4 bits of DB10:

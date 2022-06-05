@@ -301,7 +301,7 @@ MISO-DB6 | MISO-DB9 | MISO-DB10 | MISO-DB11 | MISO-DB12
  --------| ---------| ----------| ----------| ----
   0x40   | 0x80     | 0xff      | 0xff      | 0xff
 
-MISO-DB6 | MOSI-DB9 | MOSI-DB10 | MOSI-DB11 
+MOSI-DB6 | MOSI-DB9 | MOSI-DB10 | MOSI-DB11 
  --------| ---------| ----------| ----------
  bit7==0 | 0x80     | 0x10      | outdoor temperature 
 

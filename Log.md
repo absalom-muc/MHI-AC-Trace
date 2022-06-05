@@ -16,6 +16,8 @@ packet_cnt starts with a random value
 
 packet_cnt and repetitionNo are usually redundant, but it can be used in [MHI-AC-Trace.ino](https://github.com/absalom-muc/MHI-AC-Trace/blob/main/src/MHI-AC-Trace.ino) for detection of lost frames.
 
+![grafik](https://user-images.githubusercontent.com/23119513/172049770-3c6bdd64-f056-4a75-b559-98d007dc9310.png)
+
 Please check the example [MHI-ErrOpData.log](https://github.com/absalom-muc/MHI-AC-Trace/blob/main/src/MHI-ErrOpData.log).
 It represents a read of the ErrOpData for my AC.
 

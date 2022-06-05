@@ -297,18 +297,23 @@ All set-bits are cleared when the IR remote control is used. Settings can be don
 You can read different operating data of the AC related to the indoor and outdoor unit.
 The following example shows the reading of the outdoor air temperature:
 
-MISO-DB6 | MISO-DB9 | MISO-DB10 | MISO-DB11 | MISO-DB12 | MOSI-DB9 | MOSI-DB10 | MOSI-DB11 
- --------| ---------| ----------| ----------| ----------| ---------| ----------| ----------
-  0x40   | 0x80     | 0xff      | 0xff      | 0xff      | 0x80     | 0x10      |  temperature 
+MISO-DB6 | MISO-DB9 | MISO-DB10 | MISO-DB11 | MISO-DB12
+ --------| ---------| ----------| ----------| ----
+  0x40   | 0x80     | 0xff      | 0xff      | 0xff
 
-Please check the program code for further details. You find [here](https://github.com/absalom-muc/MHI-AC-Ctrl/blob/master/SW-Configuration.md#operating-data-mhi-ac-ctrl-coreh) the list of some supported topics related to operating data. And some details related to the operating data are listed in section [Operation Data Details](#operation-data-details)
+MISO-DB6 | MOSI-DB9 | MOSI-DB10 | MOSI-DB11 
+ --------| ---------| ----------| ----------
+ bit7==0 | 0x80     | 0x10      | outdoor temperature 
+
+Please check the program code for further details. You find [here](https://github.com/absalom-muc/MHI-AC-Ctrl/blob/master/SW-Configuration.md#operating-data-mhi-ac-ctrl-coreh) the list of some supported topics related to operating data. And some details related to the operating data are listed in section [Operation Data Details](#operation-data-details). Please consider that the decoding of the data could be imcomplete since only one AC (SRK 35 ZS-S) was available for testing.
 
 ## Last Error Operation Data
 The AC stores some operation data of the last error event. This error operation data can be read with the command:
 
-MISO-DB6[7]  | MISO-DB9 
- ------------| --------
-     1       | 0x45    
+MISO-DB6[7] | MISO-DB9 
+ ---------- | --------
+1           | 0x45    
+  
   
 AC answers with the following MOSI data sequence:
 
@@ -355,6 +360,9 @@ Nearly identical to [Room temperature](#room-temperature). Sometimes the two val
 
 ### 12 "TOTAL-IU-RUN" [h]
 Operating hours Indoor Unit[h]=DB11*100
+
+### 21 "OUTDOOR" [°C]
+Outdoor temperature [°C]=DB11
 
 ### 24 "COMP" [Hz]
 Compressor frequency=(db10-0x10)*25.6f + 0.1f * db11, for db10>=0x10

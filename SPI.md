@@ -203,7 +203,24 @@ But for setting Fan=4 DB6[4], not DB6[6] of the MISO frame is used:
 </tr>
 </tbody>
 </table>
-note: With the IR remote control you can select "auto" for the fan. But this is not reflected by the SPI payload.
+note: With the Infrared-remote control (IR-RC) you can select "auto" for the fan. But this is not reflected by the SPI payload.    
+
+The following table shows the mapping between Fan and IUFANSPEED (opdata) and the IR-RC for Mode=Fan:
+Fan | IUFANSPEED | IR-RC
+---|---|---
+last |0|off
+1 |2|1 bar
+2|3|2 bars
+3|4|3 bars
+4|5|4 bars
+n/a|variable, up to 7|auto
+
+'last' in the first row (when AC is powered off) means that the value of Fan is according to the last setting.    
+
+For the following diagram Fan was set to auto via IR-RC for Mode=Cool, you see the increase of IUFANSPEED from 0 to 2, 4, 6, 7:
+![grafik](https://user-images.githubusercontent.com/23119513/176353823-e1e75c35-50f2-41e4-9889-4ce4ddaba24f.png)
+
+Note that IUFANSPEED=2 is not visible in the diagram due to the low sample rate used for it.
 
 ### Vanes
 Vanes up/down swing is enabled in DB0[6]. When vanes up/down swing is disabled the vanes up/down position in MOSI DB1[5:4] is used. 

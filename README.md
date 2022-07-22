@@ -16,7 +16,9 @@ You need a [MHI-AC-Ctrl](https://github.com/absalom-muc/MHI-AC-Ctrl) PCB for usi
 # Installing:
 
 ## Hardware:
-Identical to MHI-AC-Ctrl PCB, no adaption of the MHI-AC-Ctrl PCB is required. If you want to connect more than one MHI-AC-Ctrl PCBs it might be easier using an older PCB version because the latest PCB version has only one SPI connector. Check [MHI-AC-Ctrl Readme](https://github.com/absalom-muc/MHI-AC-Ctrl#prerequisites) for a list of supported devices.
+Identical to MHI-AC-Ctrl PCB, no adaption of the MHI-AC-Ctrl PCB is required. If you want to connect more than one MHI-AC-Ctrl PCBs it might be easier using an older PCB version because the latest PCB version has only one SPI connector. The following figure shows the connections between the AC, MHI-AC-Ctrl and MHI-AC-SPY. MHI-AC-SPY is a MHI-AC-Ctrl PCB with the MHI-AC-Trace SW.
+![MHI-AC-Ctrl-Spy-fig](https://user-images.githubusercontent.com/23119513/180567578-251bfbd6-cd18-4701-9c6e-eed9b3949579.png)
+Check [MHI-AC-Ctrl Readme](https://github.com/absalom-muc/MHI-AC-Ctrl#prerequisites) for a list of supported devices.
 
 ## Software:
 The program uses the following libraries

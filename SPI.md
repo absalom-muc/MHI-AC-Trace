@@ -354,7 +354,7 @@ MOSI-DB6[7] | MOSI-DB9 | MOSI-DB10 | MOSI-DB11
 
 ## Summary
 MOSI frame:
-![grafik](https://user-images.githubusercontent.com/23119513/144754606-c56bfd1a-edf1-4c7b-855d-0d391fbb1719.png)
+![grafik](https://user-images.githubusercontent.com/23119513/201548671-3128920e-8aac-4742-8fe9-bfc4ae00f041.png)
 
 ## Operation Data Details
 Here you find detailed information related to some operating data. It is mainly based on my observations and might be partly not correct. It seems that there are different operating data available for different ACs. So there might be operating data not supported by your AC (e.g. the number of implemented temperature sensors) or there might be additional operating data available for your AC but not supported by the SW. The same is valid for the error operation data. I'm not aware how to find out addtional operation data w/o using a third party wired remote control.

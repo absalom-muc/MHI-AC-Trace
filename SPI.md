@@ -370,7 +370,7 @@ DB10[3:0] | MODE
  0x4      | Heat   
 
 ### 2 "SET-TEMP" [°C]
-The setpoint for the temperature is coded in MOSI-DB11[6:0] according to the formula T[°C]=DB11[6:0]/2. The value is identical to [Temperature setpoint](#temperature-setpoint) but with the lower resolution of 1°C when the AC is not powered. But when the AC is powered and Mode=HEAT then SET-TEMP=Temperature setpoint+2°C
+The setpoint for the temperature is coded in MOSI-DB11[6:0] according to the formula T[°C]=DB11[6:0]/2. The value is identical to [Temperature setpoint](#temperature-setpoint) but with the lower resolution of 1°C when the AC is not powered. But when the AC is powered and Mode=HEAT then SET-TEMP=Temperature setpoint+2°C (the offset is reduced to 1°C in Eco-Mode, see [here](https://github.com/absalom-muc/MHI-AC-Ctrl/issues/101#issuecomment-1344457856).
 
 ### 3 "RETURN-AIR" [°C]
 Nearly identical to [Room temperature](#room-temperature). Sometimes the two values differ by <0.5 ° C. Background is not clear. The RETURN-AIR temperature is calculated by T[°C]=(DB11[7:0]-61)/4. The resolution is 0.25°C.

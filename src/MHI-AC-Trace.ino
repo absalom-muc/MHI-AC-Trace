@@ -123,7 +123,9 @@ void loop() {
 
       if (MISO_frame[byte_cnt] != MISO_byte) {
         MISO_frame[byte_cnt] = MISO_byte;
-        MISO_diff = true;
+        // Ignore toggle of MISO DB14
+        if ((byte_cnt != DB14) & (byte_cnt != CBH) & (byte_cnt != CBL))
+          MISO_diff = true;
       }
     }
 

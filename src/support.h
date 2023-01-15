@@ -1,7 +1,7 @@
 #ifndef SUPPORT_h
 #define SUPPORT_h
 
-#define VERSION "1.51"
+#define VERSION "1.52"
 
 #define WIFI_SSID "your SSID"
 #define WIFI_PASSWORD "your WiFi password"
@@ -61,6 +61,9 @@ void setupOTA();
 #define DB6 SB2 + 7
 #define DB9 SB2 + 10
 #define DB11 SB2 + 12
+#define DB12 SB2 + 13
+#define DB13 SB2 + 14
+#define DB14 SB2 + 15
 #define CBH 18
 #define CBL 19
 

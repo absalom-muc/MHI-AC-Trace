@@ -389,6 +389,12 @@ Discharge Pipe Temperature,
 if db11 < 0x12 TD <=30°C,    
 else TD = db11 / 2 + 32 (approx)
 
+### 29 "CT" [A]
+Current
+CT[A]=DB11*14/51
+
+Resolution is 274.5mA. Multiply the current by the voltage (230V) to calculate the power.
+
 ### 32 "TDSH" [°C]
 TDSH[°C]=DB11/2
 
